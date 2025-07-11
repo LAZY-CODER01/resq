@@ -10,8 +10,10 @@ type UpdateReportPayload = {
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
+  const { params } = context;
+
   try {
     const user = await getAuthenticatedUser(req);
     if (!user) {
